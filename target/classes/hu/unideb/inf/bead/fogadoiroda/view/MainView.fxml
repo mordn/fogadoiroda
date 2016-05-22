@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="499.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.bead.fogadoiroda.view.MainViewController">
+   <children>
+      <Label layoutX="20.0" layoutY="24.0" text="Bejelentkezve, mint" />
+      <Label fx:id="felhnev" layoutX="132.0" layoutY="24.0" text="valaki" textFill="#3f17d0" />
+      <Label layoutX="222.0" layoutY="24.0" text="Egyenleg" />
+      <Label fx:id="egyenleg" layoutX="322.0" layoutY="24.0" text="0 FT" />
+      <TableView fx:id="csapatTable" layoutX="20.0" layoutY="79.0" prefHeight="400.0" prefWidth="333.0">
+        <columns>
+          <TableColumn fx:id="nevOszlop" prefWidth="257.0" text="Csapat neve" />
+          <TableColumn fx:id="pontOszlop" prefWidth="75.0" text="Pontszám" />
+        </columns>
+      </TableView>
+      <Label layoutX="20.0" layoutY="41.0" text="Tabella">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TableView fx:id="aktualisTable" layoutX="445.0" layoutY="79.0" prefHeight="187.0" prefWidth="333.0">
+        <columns>
+          <TableColumn fx:id="hazaiOszlop" prefWidth="142.0" text="Hazai csapat" />
+          <TableColumn fx:id="vendegOszlop" minWidth="0.0" prefWidth="129.0" text="Vendég csapat" />
+           <TableColumn fx:id="eredmenyOszlop" maxWidth="100.0" minWidth="0.0" prefWidth="61.0" text="Eredmény" />  
+        </columns>
+      </TableView>
+      <Label layoutX="445.0" layoutY="41.0" text="Aktuális forduló">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="lejatsz" layoutX="445.0" layoutY="266.0" mnemonicParsing="false" onAction="#lejatszas" prefHeight="35.0" prefWidth="166.0" text="Mérkőzések lejátszása" />
+      <Button fx:id="kov" layoutX="612.0" layoutY="266.0" mnemonicParsing="false" onAction="#kovefordulo" prefHeight="35.0" prefWidth="166.0" text="Következő forduló" />
+      <Label fx:id="fordulolabel" layoutX="750.0" layoutY="50.0" text="Label" />
+   </children>
+</AnchorPane>
