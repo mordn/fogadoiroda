@@ -29,14 +29,14 @@
             <Label text="Felhasználónév" />
             <Label text="Jelszó" GridPane.rowIndex="1" />
             <Label text="Jelszó újra" GridPane.rowIndex="2" />
-            <TextField fx:id="felhnev" GridPane.columnIndex="1" />
-            <TextField fx:id="knev" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="vnev" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <PasswordField fx:id="jelszo2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <PasswordField fx:id="jelszo1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Vezetéknév" GridPane.rowIndex="3" />
             <Label text="Keresztnév" GridPane.rowIndex="4" />
             <Label text="Egyenleg" GridPane.rowIndex="5" />
+            <TextField fx:id="felhnev" GridPane.columnIndex="1" />
+            <PasswordField fx:id="jelszo1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <PasswordField fx:id="jelszo2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="vnev" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="knev" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="egyenleg" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>

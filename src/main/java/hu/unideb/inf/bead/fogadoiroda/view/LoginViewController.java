@@ -3,8 +3,8 @@ package hu.unideb.inf.bead.fogadoiroda.view;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import hu.unideb.inf.bead.fogadoiroda.Main;
+import hu.unideb.inf.bead.fogadoiroda.model.Felhasznalo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,10 +19,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
-
 public class LoginViewController implements Initializable {
-		
+	
+    Main main;
+    private Felhasznalo felhasznalo = new Felhasznalo();
+	private boolean sikeres = false;
 	@FXML
 	private Label hiba;
 	@FXML
@@ -33,11 +34,17 @@ public class LoginViewController implements Initializable {
 	private TextField felhnev;
 	@FXML
 	private PasswordField jelszo;
-    
+	
+	
+	public void setMain(Main main) {
+		this.main = main;
+	}
 	@FXML
 	private void belepes(ActionEvent event) throws IOException{
-	
-    if (felhnev.getText().equals("gabi") && jelszo.getText().equals("1234")){
+		main.getFelhasznalok().forEach(t->{if (t.getFelhnev().equals(felhnev.getText()) && t.getJelszo().equals(jelszo.getText())) sikeres=true;felhasznalo=t; });
+    	
+    if(sikeres){	
+    	
        FXMLLoader loader = new FXMLLoader();
        loader.setLocation(Main.class.getResource("view/MainView.fxml"));
         try {
@@ -51,9 +58,10 @@ public class LoginViewController implements Initializable {
             Scene scene = new Scene(mainview);
             stage.setScene(scene);
             MainViewController mc = loader.getController();
+            mc.setFelhasznalo(felhasznalo);
             mc.setStage(stage);
-            stage.show();
-		
+            stage.show();		
+            
 	} catch(Exception e) {
 		e.printStackTrace();
 	}
@@ -66,35 +74,15 @@ public class LoginViewController implements Initializable {
 	
 	@FXML
 	public void regisztracio(ActionEvent event){
-		System.out.println("regisztracio");
-
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("view/RegView.fxml"));
-		try {
-			AnchorPane regview = (AnchorPane) loader.load();
-			Stage stage = new Stage();
-			stage.setTitle("Regisztráció");
-			stage.initModality(Modality.WINDOW_MODAL);	
-			Scene scene = new Scene(regview);
-            stage.setScene(scene);
-            
-            RegViewController rgw = loader.getController();
-            rgw.setStage(stage);
-            stage.showAndWait();
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		
+		Felhasznalo felhasznalo = new Felhasznalo();
+		main.createRegWindow(felhasznalo);
+		main.getFelhasznalok().add(felhasznalo);
 	}
-
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-    	felhnev.setText("gabi");
-    	jelszo.setText("1234");
-		
-	}
-	
-	
+    	felhnev.setText("alap");
+    	jelszo.setText("alap");		
+	}	
 }
 

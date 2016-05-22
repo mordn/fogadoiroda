@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 import hu.unideb.inf.bead.fogadoiroda.model.Aktualis;
 import hu.unideb.inf.bead.fogadoiroda.model.Csapat;
+import hu.unideb.inf.bead.fogadoiroda.model.Felhasznalo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +25,11 @@ import javafx.stage.Stage;
 public class MainViewController implements Initializable {
 		
 	private Stage stage;
+	public void setFelhasznalo(Felhasznalo felhasznalo){
+		  felhnev.setText(felhasznalo.getFelhnev());
+	      egyenleg.setText(felhasznalo.getEgyenleg()+" Ft");
+	}
+	
 	
 	@FXML
 	private Label fordulolabel;
@@ -165,11 +171,9 @@ public class MainViewController implements Initializable {
 					
 				
 	}
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-        felhnev.setText("gabi");
-        egyenleg.setText("10000 Ft");
         kov.setDisable(true);
         fordulolabel.setText(String.valueOf(fordulo/5+1));
         
@@ -194,9 +198,7 @@ public class MainViewController implements Initializable {
 		sorsolas();
 
 		csapatTable.setItems(csapatok);
-		aktualisTable.setItems(aktcsapatok);
-
-	
+		aktualisTable.setItems(aktcsapatok);	
 	}
 	
 }
