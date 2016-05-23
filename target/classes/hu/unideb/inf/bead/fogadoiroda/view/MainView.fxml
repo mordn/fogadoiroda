@@ -4,19 +4,20 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="499.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.bead.fogadoiroda.view.MainViewController">
+<AnchorPane prefHeight="516.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.bead.fogadoiroda.view.MainViewController">
    <children>
       <Label layoutX="20.0" layoutY="24.0" text="Bejelentkezve, mint" />
       <Label fx:id="felhnev" layoutX="132.0" layoutY="24.0" text="valaki" textFill="#3f17d0" />
       <Label layoutX="222.0" layoutY="24.0" text="Egyenleg" />
       <Label fx:id="egyenleg" layoutX="322.0" layoutY="24.0" text="0 FT" />
-      <TableView fx:id="csapatTable" layoutX="20.0" layoutY="79.0" prefHeight="400.0" prefWidth="333.0">
+      <TableView fx:id="csapatTable" layoutX="20.0" layoutY="79.0" prefHeight="400.0" prefWidth="335.0">
         <columns>
           <TableColumn fx:id="nevOszlop" prefWidth="257.0" text="Csapat neve" />
-          <TableColumn fx:id="pontOszlop" prefWidth="75.0" text="Pontszám" />
+          <TableColumn fx:id="pontOszlop" prefWidth="77.0" text="Pontszám" />
         </columns>
       </TableView>
       <Label layoutX="20.0" layoutY="41.0" text="Tabella">
@@ -24,20 +25,80 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="aktualisTable" layoutX="445.0" layoutY="79.0" prefHeight="187.0" prefWidth="333.0">
+      <TableView fx:id="aktualisTable" layoutX="460.0" layoutY="79.0" prefHeight="187.0" prefWidth="434.0">
         <columns>
+          <TableColumn fx:id="hoddsOszlop" maxWidth="50.0" minWidth="0.0" prefWidth="50.0" text="odds" />  
           <TableColumn fx:id="hazaiOszlop" prefWidth="142.0" text="Hazai csapat" />
           <TableColumn fx:id="vendegOszlop" minWidth="0.0" prefWidth="129.0" text="Vendég csapat" />
-           <TableColumn fx:id="eredmenyOszlop" maxWidth="100.0" minWidth="0.0" prefWidth="61.0" text="Eredmény" />  
+          <TableColumn fx:id="voddsOszlop" maxWidth="50.0" minWidth="0.0" prefWidth="50.0" text="odds" />  
+          <TableColumn fx:id="eredmenyOszlop" maxWidth="100.0" minWidth="0.0" prefWidth="61.0" text="Eredmény" />  
         </columns>
       </TableView>
-      <Label layoutX="445.0" layoutY="41.0" text="Aktuális forduló">
+      <Label layoutX="460.0" layoutY="41.0" text="Aktuális forduló">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="lejatsz" layoutX="445.0" layoutY="266.0" mnemonicParsing="false" onAction="#lejatszas" prefHeight="35.0" prefWidth="166.0" text="Mérkőzések lejátszása" />
-      <Button fx:id="kov" layoutX="612.0" layoutY="266.0" mnemonicParsing="false" onAction="#kovefordulo" prefHeight="35.0" prefWidth="166.0" text="Következő forduló" />
-      <Label fx:id="fordulolabel" layoutX="750.0" layoutY="50.0" text="Label" />
+      <Button fx:id="lejatsz" layoutX="460.0" layoutY="266.0" mnemonicParsing="false" onAction="#lejatszas" prefHeight="35.0" prefWidth="208.0" text="Mérkőzések lejátszása" />
+      <Button fx:id="kov" layoutX="670.0" layoutY="266.0" mnemonicParsing="false" onAction="#kovefordulo" prefHeight="35.0" prefWidth="224.0" text="Következő forduló" />
+      <Label fx:id="fordulolabel" layoutX="834.0" layoutY="41.0" text="Label">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Button fx:id="bh1" layoutX="436.0" layoutY="104.0" minHeight="24.0" mnemonicParsing="false" onAction="#h1fogad" prefHeight="15.0" prefWidth="24.0" text="OK">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="bh2" layoutX="436.0" layoutY="128.0" minHeight="24.0" mnemonicParsing="false" onAction="#h2fogad" prefHeight="24.0" prefWidth="24.0" text="OK">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="bh3" layoutX="436.0" layoutY="152.0" minHeight="24.0" mnemonicParsing="false" onAction="#h3fogad" prefHeight="24.0" prefWidth="24.0" text="OK">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="bh4" layoutX="436.0" layoutY="176.0" minHeight="24.0" mnemonicParsing="false" onAction="#h4fogad" prefHeight="24.0" prefWidth="24.0" text="OK">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="bh5" layoutX="436.0" layoutY="200.0" minHeight="24.0" mnemonicParsing="false" onAction="#h5fogad" prefHeight="24.0" prefWidth="24.0" text="OK">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="bv1" layoutX="894.0" layoutY="104.0" minHeight="24.0" minWidth="24.0" mnemonicParsing="false" onAction="#v1fogad" prefHeight="24.0" prefWidth="24.0" text="OK">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="bv2" layoutX="894.0" layoutY="128.0" minHeight="24.0" minWidth="24.0" mnemonicParsing="false" onAction="#v2fogad" prefHeight="24.0" prefWidth="24.0" text="OK">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="bv3" layoutX="894.0" layoutY="152.0" minHeight="24.0" minWidth="24.0" mnemonicParsing="false" onAction="#v3fogad" prefHeight="24.0" prefWidth="24.0" text="OK">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="bv4" layoutX="894.0" layoutY="176.0" minHeight="24.0" minWidth="24.0" mnemonicParsing="false" onAction="#v4fogad" prefHeight="24.0" prefWidth="24.0" text="OK">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="bv5" layoutX="894.0" layoutY="200.0" minHeight="24.0" minWidth="24.0" mnemonicParsing="false" onAction="#v5fogad" prefHeight="24.0" prefWidth="24.0" text="OK">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <TextField fx:id="v1" layoutX="918.0" layoutY="104.0" prefHeight="25.0" prefWidth="71.0" />
+      <TextField fx:id="v2" layoutX="918.0" layoutY="128.0" prefHeight="25.0" prefWidth="71.0" />
+      <TextField fx:id="v3" layoutX="918.0" layoutY="152.0" prefHeight="25.0" prefWidth="71.0" />
+      <TextField fx:id="v4" layoutX="918.0" layoutY="176.0" prefHeight="25.0" prefWidth="71.0" />
+      <TextField fx:id="v5" layoutX="918.0" layoutY="200.0" prefHeight="25.0" prefWidth="71.0" />
+      <TextField fx:id="h1" layoutX="365.0" layoutY="104.0" prefHeight="25.0" prefWidth="71.0" />
+      <TextField fx:id="h2" layoutX="365.0" layoutY="128.0" prefHeight="25.0" prefWidth="71.0" />
+      <TextField fx:id="h3" layoutX="365.0" layoutY="152.0" prefHeight="25.0" prefWidth="71.0" />
+      <TextField fx:id="h4" layoutX="365.0" layoutY="176.0" prefHeight="25.0" prefWidth="71.0" />
+      <TextField fx:id="h5" layoutX="365.0" layoutY="200.0" prefHeight="25.0" prefWidth="71.0" />
+      <Label fx:id="fogadasihiba" layoutX="460.0" layoutY="345.0" text=" " textFill="RED">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

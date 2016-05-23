@@ -6,6 +6,8 @@ public class Aktualis {
 	  String vendeg;
 	  int hazaigol;
 	  int vendeggol;
+	  double hazaiodds;
+	  double vendegodds;
 	  String eredmeny;
 	  
 	public Aktualis() {
@@ -36,10 +38,12 @@ public class Aktualis {
 		this.eredmeny = eredmeny;
 	}
 
-	public Aktualis(String hazai, String vendeg) {
+	public Aktualis(String hazai, String vendeg,double hodds,double vodds) {
 		this.hazai = hazai;
 		this.vendeg = vendeg;
 		this.eredmeny = "";
+		this.hazaiodds=hodds;
+		this.vendegodds=vodds;
 
 	}
 
@@ -67,13 +71,25 @@ public class Aktualis {
 		this.eredmeny = eredmeny;
 	}
 
+	public double getHazaiodds() {
+		return hazaiodds;
+	}
+
+	public void setHazaiodds(double hazaiodds) {
+		this.hazaiodds = hazaiodds;
+	}
+
+	public double getVendegodds() {
+		return vendegodds;
+	}
+
+	public void setVendegodds(double vendegodds) {
+		this.vendegodds = vendegodds;
+	}
+
 	@Override
 	public String toString() {
 		return "Aktualis [hazai=" + hazai + ", vendeg=" + vendeg + ", hazaigol=" + hazaigol + ", vendeggol=" + vendeggol
-				+ ", eredmeny=" + eredmeny + "]";
+				+ ", hazaiodds=" + hazaiodds + ", vendegodds=" + vendegodds + ", eredmeny=" + eredmeny + "]";
 	}
-	
-	
-	
-
 }
