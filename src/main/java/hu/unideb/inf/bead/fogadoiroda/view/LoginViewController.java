@@ -41,8 +41,12 @@ public class LoginViewController implements Initializable {
 	}
 	@FXML
 	private void belepes(ActionEvent event) throws IOException{
-		main.getFelhasznalok().forEach(t->{if (t.getFelhnev().equals(felhnev.getText()) && t.getJelszo().equals(jelszo.getText())) sikeres=true;felhasznalo=t; });
-    	
+		for (int i = 0; i < main.getFelhasznalok().size(); i++) {	
+			if (main.getFelhasznalok().get(i).getFelhnev().equals(felhnev.getText()) && main.getFelhasznalok().get(i).getJelszo().equals(jelszo.getText())){
+				felhasznalo=main.getFelhasznalok().get(i);
+				sikeres=true;
+			}
+		}
     if(sikeres){	
     	
        FXMLLoader loader = new FXMLLoader();
@@ -58,7 +62,7 @@ public class LoginViewController implements Initializable {
             Scene scene = new Scene(mainview);
             stage.setScene(scene);
             MainViewController mc = loader.getController();
-            mc.setFelhasznalo(felhasznalo);
+            mc.setFelhasznalo(felhasznalo,main.getFelhasznalok());
             mc.setStage(stage);
             stage.show();		
             

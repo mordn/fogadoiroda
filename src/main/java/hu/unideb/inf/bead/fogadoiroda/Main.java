@@ -3,6 +3,9 @@ package hu.unideb.inf.bead.fogadoiroda;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
 import hu.unideb.inf.bead.fogadoiroda.model.Felhasznalo;
 import hu.unideb.inf.bead.fogadoiroda.view.LoginViewController;
 import hu.unideb.inf.bead.fogadoiroda.view.RegViewController;
@@ -18,6 +21,7 @@ public class Main extends Application {
 	public List<Felhasznalo> felhasznalok = new ArrayList<Felhasznalo>();
 	
 	public Stage primaryStage;
+	private Xml filekezel;
 	
 	public Stage getPrimaryStage() {
 		return primaryStage;
@@ -41,9 +45,32 @@ public class Main extends Application {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		filekezel = new Xml();
+		try {
+			filekezel.init();
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		felhasznalok=filekezel.beolvas(felhasznalok);
+		System.out.println("Felhasználók: ");
+		felhasznalok.forEach(System.out::println);
 	}	
 	public Main(){
-		felhasznalok.add(new Felhasznalo("alap","alap","Jobbágy","Koppány",5000.0));
+		//felhasznalok.add(new Felhasznalo("alap","alap","Jobbágy","Koppány",5000.0));
+	//	filekezel = new Xml();
+	//	filekezel.beolvas(felhasznalok);
+	/*	try {
+			filekezel.init();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (TransformerException e) {
+			e.printStackTrace();
+		}*/
+		
 	}
 	
 	public void createRegWindow(Felhasznalo felhasznalo){
@@ -66,7 +93,11 @@ public class Main extends Application {
 	            rgw.setFelhasznalo(felhasznalo);
 	            rgw.setStage(stage);
 	            stage.showAndWait();
-	            		
+	            felhasznalok.add(felhasznalo);
+	            filekezel.filebair(felhasznalok);
+	    		felhasznalok.stream().forEach(System.out::println);
+	    		
+	            
 			} catch(Exception e) {
 				e.printStackTrace();
 			}		

@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import hu.unideb.inf.bead.fogadoiroda.Xml;
 import hu.unideb.inf.bead.fogadoiroda.model.Aktualis;
 import hu.unideb.inf.bead.fogadoiroda.model.Csapat;
 import hu.unideb.inf.bead.fogadoiroda.model.Felhasznalo;
@@ -25,6 +27,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class MainViewController implements Initializable {
+	private Xml filekezel = new Xml();
 	private Felhasznalo felhasznalo;	
 	private Stage stage;
     private int hazaiid,vendegid,hazaigol,vendeggol,fordulo;
@@ -35,11 +38,12 @@ public class MainViewController implements Initializable {
     private int sorrend[]={70,24,69,13,58,87,92,36,45,1,74,18,30,62,59,41,83,25,6,97,19,8,65,72,34,40,86,21,93,57,15,84,9,32,67,71,46,20,98,53,49,5,37,82,61};
     private ObservableList<Csapat> csapatok = FXCollections.observableArrayList();
     private ObservableList<Aktualis> aktcsapatok = FXCollections.observableArrayList();
-    
-	public void setFelhasznalo(Felhasznalo felhasznalo){
+    private List<Felhasznalo> felhasznalolista;
+	public void setFelhasznalo(Felhasznalo felhasznalo,List<Felhasznalo> felhasznalolista){
 		  felhnev.setText(felhasznalo.getFelhnev());
 	      egyenleg.setText(felhasznalo.getEgyenleg()+" Ft");
 	      this.felhasznalo=felhasznalo;
+	      this.felhasznalolista=felhasznalolista;
 	}
 	public void setStage(Stage stage) {
 		this.stage = stage;
@@ -144,6 +148,7 @@ public class MainViewController implements Initializable {
 	    fogadastlejatsz(); 
 	    fogadastnullaz();
 	    fogadasigombokletilt();
+	    filekezel.filebair(felhasznalolista);
 	    
     }
 	

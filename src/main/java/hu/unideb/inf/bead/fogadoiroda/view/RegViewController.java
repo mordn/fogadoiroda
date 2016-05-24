@@ -62,8 +62,7 @@ public class RegViewController implements Initializable {
 			felh.setKnev(knev.getText());
 			felh.setVnev(vnev.getText());
 			felh.setEgyenleg(Double.valueOf(egyenleg.getText()));
-			System.out.println(felh);
-				
+						
 		stage.close();
 		}
 	}
