@@ -45,13 +45,13 @@ public class RegViewController implements Initializable {
 	
 	@FXML
 	private void cancelAction(ActionEvent event) throws IOException{
-		System.out.println("mégse");
+
 		stage.close();
 	}	
 	
 	@FXML
 	private void okAction(ActionEvent event) throws IOException{
-		if (!jelszo1.getText().equals(jelszo2.getText())){
+		if (!jelszo1.getText().equals(jelszo2.getText()) || jelszo1.getText().equals("")){
 			label.setText("a két jelszónak meg kell egyeznie");
 			jelszo1.clear();
 			jelszo2.clear();

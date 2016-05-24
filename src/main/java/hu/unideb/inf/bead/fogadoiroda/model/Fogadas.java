@@ -86,4 +86,6 @@ public class Fogadas {
 	public void setV5(double v5) {
 		this.v5 = v5;
 	}
+	
+	
 }

@@ -28,20 +28,24 @@ import javafx.stage.Stage;
 
 public class MainViewController implements Initializable {
 	private Xml filekezel = new Xml();
-	private Felhasznalo felhasznalo;	
+	public Felhasznalo felhasznalo;	
 	private Stage stage;
-    private int hazaiid,vendegid,hazaigol,vendeggol,fordulo;
-    private String eredmeny;
-    private Csapat hazai = new Csapat();
-    private Csapat vendeg = new Csapat();
-    private Fogadas fogadasok = new Fogadas();
-    private int sorrend[]={70,24,69,13,58,87,92,36,45,1,74,18,30,62,59,41,83,25,6,97,19,8,65,72,34,40,86,21,93,57,15,84,9,32,67,71,46,20,98,53,49,5,37,82,61};
-    private ObservableList<Csapat> csapatok = FXCollections.observableArrayList();
-    private ObservableList<Aktualis> aktcsapatok = FXCollections.observableArrayList();
-    private List<Felhasznalo> felhasznalolista;
+    public int hazaiid,vendegid,hazaigol,vendeggol,fordulo;
+    public String eredmeny;
+    public Csapat hazai = new Csapat();
+    public Csapat vendeg = new Csapat();
+    public Fogadas fogadasok = new Fogadas();
+    public int sorrend[]={70,24,69,13,58,87,92,36,45,1,74,18,30,62,59,41,83,25,6,97,19,8,65,72,34,40,86,21,93,57,15,84,9,32,67,71,46,20,98,53,49,5,37,82,61};
+    public ObservableList<Csapat> csapatok = FXCollections.observableArrayList();
+    public ObservableList<Aktualis> aktcsapatok = FXCollections.observableArrayList();
+    public List<Felhasznalo> felhasznalolista;
 	public void setFelhasznalo(Felhasznalo felhasznalo,List<Felhasznalo> felhasznalolista){
 		  felhnev.setText(felhasznalo.getFelhnev());
 	      egyenleg.setText(felhasznalo.getEgyenleg()+" Ft");
+	      this.felhasznalo=felhasznalo;
+	      this.felhasznalolista=felhasznalolista;
+	}
+	public void setFelhasznalo2(Felhasznalo felhasznalo,List<Felhasznalo> felhasznalolista){
 	      this.felhasznalo=felhasznalo;
 	      this.felhasznalolista=felhasznalolista;
 	}
@@ -80,24 +84,24 @@ public class MainViewController implements Initializable {
 	@FXML
 	private Label fogadasihiba;
 	@FXML
-	private Label felhnev;
+	public Label felhnev;
 	@FXML
-	private Label egyenleg;
+	public Label egyenleg;
 	
 	@FXML
 	private Button kov;
 	@FXML
 	private Button lejatsz;
-	@FXML private TextField h1;
-	@FXML private TextField h2;
-	@FXML private TextField h3;
-	@FXML private TextField h4;
-	@FXML private TextField h5;
-	@FXML private TextField v1;
-	@FXML private TextField v2;
-	@FXML private TextField v3;
-	@FXML private TextField v4;
-	@FXML private TextField v5;
+	@FXML public TextField h1;
+	@FXML public TextField h2;
+	@FXML public TextField h3;
+	@FXML public TextField h4;
+	@FXML public TextField h5;
+	@FXML public TextField v1;
+	@FXML public TextField v2;
+	@FXML public TextField v3;
+	@FXML public TextField v4;
+	@FXML public TextField v5;
 	@FXML private Button bh1;
 	@FXML private Button bh2;
 	@FXML private Button bh3;
@@ -152,15 +156,17 @@ public class MainViewController implements Initializable {
 	    
     }
 	
-	private void hazainyert(int hazaigol,int vendeggol,Csapat hazai,Csapat vendég){
+	public void hazainyert(int hazaigol,int vendeggol,Csapat hazai,Csapat vendég){
 		csapatok.forEach(t->{ if (t.getNev().equals(hazai.getNev())) t.setPontszam(t.getPontszam()+3);});
 	}
-	private void dontetlen(int hazaigol,int vendeggol,Csapat hazai,Csapat vendég){
+	public void dontetlen(int hazaigol,int vendeggol,Csapat hazai,Csapat vendeg){
 		csapatok.forEach(t->{ if (t.getNev().equals(hazai.getNev())) t.setPontszam(t.getPontszam()+1);});
         csapatok.forEach(t->{ if (t.getNev().equals(vendeg.getNev())) t.setPontszam(t.getPontszam()+1);});
 	}
-	private void vendegnyert(int hazaigol,int vendeggol,Csapat hazai,Csapat vendég){
+	public void vendegnyert(int hazaigol,int vendeggol,Csapat hazai,Csapat vendeg){
+		
 		csapatok.forEach(t->{ if (t.getNev().equals(vendeg.getNev())) t.setPontszam(t.getPontszam()+3);});
+
 	}
 	
 	@FXML	
@@ -217,7 +223,7 @@ public class MainViewController implements Initializable {
 		aktualisTable.setItems(aktcsapatok);	
 	}
 	@FXML	
-    private void h1fogad(ActionEvent event){ 
+    public void h1fogad(){ 
 	    try{			
 	    	if (Double.parseDouble(h1.getText())<=felhasznalo.getEgyenleg()){
 	       fogadasihiba.setText("");	
@@ -397,7 +403,7 @@ public class MainViewController implements Initializable {
 		      v5.clear();
 	}
 	
-	private void fogadastnullaz(){
+	public void fogadastnullaz(){
 		fogadasok.setH1(0.0);
 		fogadasok.setH2(0.0);
 		fogadasok.setH3(0.0);
@@ -411,6 +417,35 @@ public class MainViewController implements Initializable {
 	}
 	
 	private void fogadastlejatsz(){
+		fogadasoklejatszasa();
+	    egyenleg.setText(felhasznalo.getEgyenleg()+" Ft");		
+	}
+	private void fogadasigombokletilt(){
+	      bh1.setDisable(true);
+	      bh2.setDisable(true);
+	      bh3.setDisable(true);
+	      bh4.setDisable(true);
+	      bh5.setDisable(true);
+	      bv1.setDisable(true);
+	      bv2.setDisable(true);
+	      bv3.setDisable(true);
+	      bv4.setDisable(true);
+	      bv5.setDisable(true);
+	}
+	
+	private void fogadasigombokengedelyez(){
+	      bh1.setDisable(false);
+	      bh2.setDisable(false);
+	      bh3.setDisable(false);
+	      bh4.setDisable(false);
+	      bh5.setDisable(false);
+	      bv1.setDisable(false);
+	      bv2.setDisable(false);
+	      bv3.setDisable(false);
+	      bv4.setDisable(false);
+	      bv5.setDisable(false);
+	}
+	public void fogadasoklejatszasa(){
 		if (fogadasok.getH1()>0 && (aktcsapatok.get(0).getHazaigol()>aktcsapatok.get(0).getVendeggol())){
 			felhasznalo.setEgyenleg(felhasznalo.getEgyenleg()+fogadasok.getH1()*aktcsapatok.get(0).getHazaiodds());
 		}
@@ -441,31 +476,5 @@ public class MainViewController implements Initializable {
 		else if(fogadasok.getV5()>0 &&  (aktcsapatok.get(4).getHazaigol()<aktcsapatok.get(4).getVendeggol())){
 			felhasznalo.setEgyenleg(felhasznalo.getEgyenleg()+fogadasok.getV5()*aktcsapatok.get(4).getHazaiodds());
 		}
-	    egyenleg.setText(felhasznalo.getEgyenleg()+" Ft");		
-	}
-	private void fogadasigombokletilt(){
-	      bh1.setDisable(true);
-	      bh2.setDisable(true);
-	      bh3.setDisable(true);
-	      bh4.setDisable(true);
-	      bh5.setDisable(true);
-	      bv1.setDisable(true);
-	      bv2.setDisable(true);
-	      bv3.setDisable(true);
-	      bv4.setDisable(true);
-	      bv5.setDisable(true);
-	}
-	
-	private void fogadasigombokengedelyez(){
-	      bh1.setDisable(false);
-	      bh2.setDisable(false);
-	      bh3.setDisable(false);
-	      bh4.setDisable(false);
-	      bh5.setDisable(false);
-	      bv1.setDisable(false);
-	      bv2.setDisable(false);
-	      bv3.setDisable(false);
-	      bv4.setDisable(false);
-	      bv5.setDisable(false);
 	}
 }

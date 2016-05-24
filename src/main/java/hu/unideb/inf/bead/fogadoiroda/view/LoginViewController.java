@@ -80,7 +80,6 @@ public class LoginViewController implements Initializable {
 	public void regisztracio(ActionEvent event){
 		Felhasznalo felhasznalo = new Felhasznalo();
 		main.createRegWindow(felhasznalo);
-		main.getFelhasznalok().add(felhasznalo);
 	}
 	
 	@Override

@@ -92,4 +92,18 @@ public class Aktualis {
 		return "Aktualis [hazai=" + hazai + ", vendeg=" + vendeg + ", hazaigol=" + hazaigol + ", vendeggol=" + vendeggol
 				+ ", hazaiodds=" + hazaiodds + ", vendegodds=" + vendegodds + ", eredmeny=" + eredmeny + "]";
 	}
+
+	public Aktualis(String hazai, String vendeg, int hazaigol, int vendeggol, double hazaiodds, double vendegodds,
+			String eredmeny) {
+		super();
+		this.hazai = hazai;
+		this.vendeg = vendeg;
+		this.hazaigol = hazaigol;
+		this.vendeggol = vendeggol;
+		this.hazaiodds = hazaiodds;
+		this.vendegodds = vendegodds;
+		this.eredmeny = eredmeny;
+	}
+	
+	
 }
